@@ -21,13 +21,19 @@ package example;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import org.apache.kafka.common.serialization.Deserializer;
 import org.apache.kafka.common.serialization.Serializer;
 
 /**
  *
  * @author nicolo.boschi
  */
-public class LogLineSerde implements Serializer<LogLine> {
+public class LogLineSerde implements Serializer<LogLine>, Deserializer<LogLine> {
+
+    @Override
+    public LogLine deserialize(String string, byte[] bytes) {
+        return null;
+    }
 
     @Override
     public void configure(Map<String, ?> configs, boolean isKey) {
@@ -41,6 +47,4 @@ public class LogLineSerde implements Serializer<LogLine> {
     @Override
     public void close() {
     }
-
-   
 }

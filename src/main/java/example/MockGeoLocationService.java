@@ -19,9 +19,38 @@
  */
 package example;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class MockGeoLocationService {
 
-    public static String findLocation(String ip) {
-        return "Italy";
+    List<String> ips = new ArrayList<>();
+    Map<String, String> mappedIps = new HashMap<>();
+
+    public MockGeoLocationService() {
+        map();
+    }
+
+    public String findLocation(String ip) {
+        String ipPrefix = Arrays.asList(ip.split("\\.")).get(0);
+        return mappedIps.get(ipPrefix);
+    }
+
+    private void map() {
+        for (int i = 1; i < 64; i++) {
+            mappedIps.put(String.valueOf(i), "Italy");
+        }
+        for (int i = 64; i < 128; i++) {
+            mappedIps.put(String.valueOf(i), "England");
+        }
+        for (int i = 128; i < 192; i++) {
+            mappedIps.put(String.valueOf(i), "Usa");
+        }
+        for (int i = 192; i < 256; i++) {
+            mappedIps.put(String.valueOf(i), "France");
+        }
     }
 }

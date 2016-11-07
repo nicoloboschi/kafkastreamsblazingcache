@@ -15,7 +15,7 @@
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-streams</artifactId>
-            <version>0.10.1.0</version>
+            <version>0.10.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.blazingcache</groupId>

@@ -38,7 +38,7 @@ public class Executor {
     private final String output_topic;
 
     private final Serde<String> stringSerde = Serdes.String();
-    private final Serde<LogLine> logLineSerde = Serdes.serdeFrom(new LogLineSerde(), new LogLineDeserializier());
+    private final Serde<LogLine> logLineSerde = Serdes.serdeFrom(new LogLineSerde(), new LogLineSerde());
 
     private final Properties props;
     private final Properties cacheConfiguration;
@@ -69,6 +69,7 @@ public class Executor {
 
                 KStreamBuilder builder = new KStreamBuilder();
                 KStream<String, String> startLines = builder.stream(stringSerde, stringSerde, input_topic);
+                MockGeoLocationService geoLocationService = new MockGeoLocationService();
 
                 KStream<String, LogLine> finalLines = startLines
                     .mapValues((value) -> {
@@ -79,7 +80,7 @@ public class Executor {
                         if (ip != null) {
                             String location = cache.get(ip);
                             if (location == null) {
-                                location = MockGeoLocationService.findLocation(ip);
+                                location = geoLocationService.findLocation(ip);
                                 cache.put(ip, location);
                             }
                             logLine.setLocation(location);
@@ -88,7 +89,6 @@ public class Executor {
                     });
 
                 finalLines.to(stringSerde, logLineSerde, output_topic);
-
                 KafkaStreams streams = new KafkaStreams(builder, props);
                 streams.start();
                 Thread.sleep(5000L);
