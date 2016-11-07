@@ -14,7 +14,7 @@ Create an input Kafka topic named 'input' and write this content (this is like a
 25-10-2016 127.10.2.2 GET/bar.html<br/>
 25-10-2016 195.4.4.1 GET/foo.html<br/>
 25-10-2016 127.84.0.1 GET/foo.html<br/>
-25-10-2016 127.77.0.1 GET/foo.html<br/>
+25-10-2016 127.77.0.1 GET/foo.html
 
 
 you can use the kafka-console-producer script inside standard Kafka distribution.

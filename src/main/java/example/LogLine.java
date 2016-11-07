@@ -34,10 +34,10 @@ public class LogLine {
         for (String element : elements) {
             if (element.contains("-")) {
                 logLine.setTimestamp(element);
-            } else if (element.contains(".")) {
-                logLine.setIp(element);
-            } else {
+            } else if (element.contains("html")) {
                 logLine.setRequest(element);
+            } else if (element.contains(".")){
+                logLine.setIp(element);
             }
         }
         return logLine;
