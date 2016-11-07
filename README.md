@@ -7,10 +7,13 @@ see http://docs.confluent.io/3.0.0/streams/quickstart.html
 Create an input Kafka topic named 'input' and write this content (this is like a web server access log): 
 
 25-10-2016 195.4.4.1 GET/foo.html
+25-10-2016 195.1.4.1 GET/foo.html
+25-10-2016 10.4.4.1 GET/foo.html
+25-10-2016 89.4.3.1 GET/foo.html
 25-10-2016 127.10.2.2 GET/bar.html
 25-10-2016 195.4.4.1 GET/foo.html
-25-10-2016 127.0.0.1 GET/foo.html
-25-10-2016 127.0.0.1 GET/foo.html
+25-10-2016 127.84.0.1 GET/foo.html
+25-10-2016 127.77.0.1 GET/foo.html
 
 you can use the kafka-console-producer script inside standard Kafka distribution.
 
