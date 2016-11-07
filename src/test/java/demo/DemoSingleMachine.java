@@ -28,7 +28,7 @@ public class DemoSingleMachine {
     @Test
     public void demo() throws Exception {        
         Properties cacheConfiguration = new Properties();
-        Executor executor = new Executor("input-topic11", "output-topic15", cacheConfiguration);
+        Executor executor = new Executor("input", "output", cacheConfiguration);
         executor.run();
     }
 

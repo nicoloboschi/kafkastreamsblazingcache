@@ -19,19 +19,16 @@
  */
 package example;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class MockGeoLocationService {
 
-    List<String> ips = new ArrayList<>();
     Map<String, String> mappedIps = new HashMap<>();
 
     public MockGeoLocationService() {
-        map();
+        generateTestData();
     }
 
     public String findLocation(String ip) {
@@ -39,7 +36,7 @@ public class MockGeoLocationService {
         return mappedIps.get(ipPrefix);
     }
 
-    private void map() {
+    private void generateTestData() {
         for (int i = 1; i < 64; i++) {
             mappedIps.put(String.valueOf(i), "Italy");
         }
